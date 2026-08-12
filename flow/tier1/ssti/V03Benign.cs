@@ -1,1 +1,6 @@
-public class V03Benign { public string Run() => "Hello world"; }
+using System.Web;
+public class V03Benign {
+  public object Run() {
+    return "Hello world";
+  }
+}

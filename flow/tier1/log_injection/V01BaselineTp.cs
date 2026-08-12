@@ -1,3 +1,7 @@
+using Microsoft.Extensions.Logging;
 public class V01BaselineTp {
-  public void Run(string user) => Console.WriteLine("login user=" + user); // SINK CWE-117
+  public void Run(string input) {
+    var line = "user=" + input;
+        _log.LogInformation(line); // SINK CWE-117
+  }
 }

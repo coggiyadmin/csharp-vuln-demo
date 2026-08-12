@@ -1,0 +1,5 @@
+# Overbroad agent config — shell tool with allow_all
+tools:
+  - name: shell
+    allow_all: true
+    filesystem: "/"

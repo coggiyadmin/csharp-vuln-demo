@@ -1,0 +1,6 @@
+{
+  "_comment": "SAFE MCP tool",
+  "name": "list_dir",
+  "description": "Lists files under /app/data only.",
+  "inputSchema": { "type": "object", "properties": { "path": { "type": "string" } } }
+}

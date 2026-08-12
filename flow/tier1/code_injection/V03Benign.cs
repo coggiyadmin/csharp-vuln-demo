@@ -1,1 +1,6 @@
-public class V03Benign { public int Add(int a, int b) => a + b; }
+using Microsoft.CodeAnalysis.CSharp.Scripting;
+public class V03Benign {
+  public object Run() {
+    return 1;
+  }
+}

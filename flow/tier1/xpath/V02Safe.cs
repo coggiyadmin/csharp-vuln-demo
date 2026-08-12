@@ -1,1 +1,6 @@
-public class V02Safe { public void Run(string q) { if (q.All(char.IsLetterOrDigit)) { var xp = "//user[@name='" + q + "']"; } } }
+using System.Xml;
+public class V02Safe {
+  public void Run(XmlDocument doc, string input) {
+    if (input.All(char.IsLetterOrDigit)) doc.SelectSingleNode("//user[name='" + input + "']");
+  }
+}

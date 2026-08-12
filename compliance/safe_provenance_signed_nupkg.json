@@ -1,0 +1,9 @@
+{
+  "_comment": "SAFE — signed NuGet with SLSA provenance.",
+  "artifact": "Demo.Lib.1.0.0.nupkg",
+  "signed": true,
+  "provenance": {
+    "slsaLevel": 3,
+    "builderId": "https://github.com/org/demo/.github/workflows/release.yml"
+  }
+}

@@ -1,4 +1,7 @@
+using Microsoft.CodeAnalysis.CSharp.Scripting;
 public class V01BaselineTp {
-  public void Run(string code) { Evaluator.Eval(code); } // SINK CWE-94
+  public void Run(string input) {
+    var full = "return " + input;
+        await CSharpScript.EvaluateAsync(full); // SINK CWE-94
+  }
 }
-static class Evaluator { public static void Eval(string c) => System.Reflection.Assembly.Load(c); }

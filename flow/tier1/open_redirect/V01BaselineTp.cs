@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 public class V01BaselineTp {
-  public string Run(string next) => "Location: " + next; // SINK CWE-601
+  public object Run(string input) {
+    var target = input;
+        return Redirect(target); // SINK CWE-601
+  }
 }

@@ -1,7 +1,10 @@
+using System.Web;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 public class LoopXssTp {
-  public void Run(string q) {
+  public void Run(string input) {
     var acc = "";
-    foreach (var ch in q) acc += ch; // loop-carried
-    System.Console.Write("<p>" + acc + "</p>"); // SINK CWE-79
+    foreach (var ch in input) acc += ch; // loop-carried
+    var s = "<div>" + acc + "</div>";
+        return Html.Raw(s); // SINK CWE-79
   }
 }

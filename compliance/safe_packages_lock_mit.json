@@ -1,0 +1,4 @@
+{
+  "_comment": "SAFE lockfile",
+  "dependencies": { "SomeMitLib": { "version": "1.0.0", "license": "MIT" } }
+}

@@ -1,0 +1,4 @@
+{
+  "_comment": "lockfile copyleft signal",
+  "dependencies": { "SomeGplLib": { "version": "1.0.0", "license": "GPL-3.0" } }
+}

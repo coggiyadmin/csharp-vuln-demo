@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Http;
 public class V01BaselineTp {
-  public string Run(string h) => "X-Trace: " + h; // SINK CWE-93
+  public void Run(string input) {
+    var h = "X-Trace: " + input;
+        Response.Headers.Add("X-Trace", input); // SINK CWE-113
+  }
 }

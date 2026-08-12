@@ -1,7 +1,7 @@
 using System.Net.Http;
 public class V02Safe {
-  public async Task Run(string url) {
-    var host = new Uri(url).Host;
-    if (host == "api.internal.example.com") await new HttpClient().GetStringAsync(url);
+  public async Task Run(string input) {
+    var host = new Uri(input).Host;
+        if (host == "api.internal.example.com") await new HttpClient().GetAsync(input);
   }
 }

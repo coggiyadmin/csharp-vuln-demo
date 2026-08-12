@@ -1,1 +1,6 @@
-public class V03Benign { public string Run() => "X-Trace: static"; }
+using Microsoft.AspNetCore.Http;
+public class V03Benign {
+  public void Run() {
+    Response.Headers.Add("X-Trace", "static");
+  }
+}

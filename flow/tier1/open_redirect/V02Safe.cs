@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 public class V02Safe {
-  public string Run(string next) {
-    var host = new Uri(next, UriKind.RelativeOrAbsolute).Host;
-    return host == "app.example.com" ? "Location: " + next : "Location: /home";
+  public object Run(string input) {
+    var host = new Uri(input, UriKind.RelativeOrAbsolute).Host;
+        return host == "app.example.com" ? Redirect(input) : Redirect("/home");
   }
 }

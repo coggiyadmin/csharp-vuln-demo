@@ -1,0 +1,5 @@
+# SAFE — high-risk with oversight + logging
+name: credit-scorer
+risk_level: high
+human_oversight: true
+logging: true

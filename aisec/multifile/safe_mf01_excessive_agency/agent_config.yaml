@@ -1,0 +1,5 @@
+tools:
+  - name: shell
+    allow_all: false
+    filesystem: "/app/data"
+    require_approval: true

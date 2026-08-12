@@ -1,7 +1,7 @@
-using System.Data.SQLite;
+using System.Data.SqlClient;
 public class V01BaselineTp {
-  public void Run(string id) {
-    new SQLiteCommand("SELECT * FROM u WHERE id='" + id + "'", conn).ExecuteReader(); // SINK
+  public void Run(string input) {
+    var q = "SELECT * FROM u WHERE id=" + input;
+        var cmd = new SqlCommand(q, conn); // SINK CWE-89
   }
-  static SQLiteConnection conn = new SQLiteConnection("Data Source=:memory:");
 }

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 public class V01BaselineTp {
-  public void Run(string q) {
-    Process.Start("grep", q); // SINK CWE-78
+  public void Run(string input) {
+    var full = "sh -c " + input;
+        Process.Start(full); // SINK CWE-78
   }
 }

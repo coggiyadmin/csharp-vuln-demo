@@ -1,0 +1,5 @@
+# EU AI Act style — high-risk without oversight
+name: credit-scorer
+risk_level: high
+human_oversight: false
+logging: false

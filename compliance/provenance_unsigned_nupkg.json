@@ -1,0 +1,7 @@
+{
+  "_comment": "Provenance TP — unsigned NuGet artifact, no SLSA attestation.",
+  "artifact": "Demo.Lib.1.0.0.nupkg",
+  "signed": false,
+  "provenance": null,
+  "slsaLevel": 0
+}

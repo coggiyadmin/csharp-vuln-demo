@@ -1,1 +1,8 @@
-public class V03Benign { public object Run() => new { ok = true }; }
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Text.Json;
+public class V03Benign {
+  public void Run() {
+    var obj = new { ok = true };
+  }
+}

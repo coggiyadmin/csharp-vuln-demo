@@ -1,7 +1,7 @@
+using System.Data.SqlClient;
 public class CorrectSqliSafe {
   public void Run(string q) {
-    var cmd = new System.Data.SQLite.SQLiteCommand("SELECT * FROM u WHERE id=@id", null);
-    cmd.Parameters.AddWithValue("@id", q);
-    cmd.ExecuteReader();
+    var cmd = new SqlCommand("SELECT * FROM u WHERE id=@id", conn);
+        cmd.Parameters.AddWithValue("@id", q);
   }
 }

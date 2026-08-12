@@ -1,3 +1,7 @@
+using System.Web;
 public class V01BaselineTp {
-  public string Run(string name) => $"Hello {name}"; // SINK CWE-1336
+  public object Run(string input) {
+    var tpl = "Hello " + input;
+        return Razor.Parse(tpl); // SINK CWE-1336
+  }
 }

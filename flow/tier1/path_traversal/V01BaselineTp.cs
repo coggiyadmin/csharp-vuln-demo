@@ -1,3 +1,7 @@
+using System.IO;
 public class V01BaselineTp {
-  public byte[] Run(string p) => File.ReadAllBytes("/var/www/" + p); // SINK CWE-22
+  public void Run(string input) {
+    var full = "/data/" + input;
+        var txt = File.ReadAllText(full); // SINK CWE-22
+  }
 }

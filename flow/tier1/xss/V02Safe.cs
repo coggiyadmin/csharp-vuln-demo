@@ -1,4 +1,7 @@
-using System.Net;
+using System.Web;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 public class V02Safe {
-  public string Run(string msg) => "<p>" + WebUtility.HtmlEncode(msg) + "</p>";
+  public object Run(string input) {
+    return Html.Raw(HttpUtility.HtmlEncode(input));
+  }
 }

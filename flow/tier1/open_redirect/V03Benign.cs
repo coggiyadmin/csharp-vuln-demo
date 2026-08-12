@@ -1,1 +1,6 @@
-public class V03Benign { public string Run() => "Location: /home"; }
+using Microsoft.AspNetCore.Mvc;
+public class V03Benign {
+  public object Run() {
+    return Redirect("/home");
+  }
+}

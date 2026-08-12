@@ -1,5 +1,6 @@
-using System.Data.SQLite;
+using System.Data.SqlClient;
 public class V03Benign {
-  public void Run() { new SQLiteCommand("SELECT 1", conn).ExecuteScalar(); }
-  static SQLiteConnection conn = new SQLiteConnection("Data Source=:memory:");
+  public void Run() {
+    var cmd = new SqlCommand("SELECT 1", conn);
+  }
 }

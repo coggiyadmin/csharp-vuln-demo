@@ -1,1 +1,7 @@
-public class V02Safe { public Dictionary<string, string> Run(string role) => new() { ["role"] = role }; }
+using MongoDB.Bson;
+using MongoDB.Driver;
+public class V02Safe {
+  public void Run(string input) {
+    col.Find(Builders<BsonDocument>.Filter.Eq("role", input));
+  }
+}

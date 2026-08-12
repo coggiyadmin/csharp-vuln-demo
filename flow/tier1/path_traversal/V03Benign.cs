@@ -1,1 +1,6 @@
-public class V03Benign { public byte[] Run() => File.ReadAllBytes("/var/www/index.html"); }
+using System.IO;
+public class V03Benign {
+  public void Run() {
+    var txt = File.ReadAllText("/data/index.html");
+  }
+}

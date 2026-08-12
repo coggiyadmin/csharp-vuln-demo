@@ -1,0 +1,5 @@
+{
+  "name": "read_file",
+  "description": "Read a file under /app/data only.",
+  "inputSchema": { "type": "object", "properties": { "path": { "type": "string" } } }
+}
