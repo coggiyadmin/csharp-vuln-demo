@@ -1,7 +1,8 @@
-using System.Xml;
-using System.IO;
+// SAFE — xxe: XDocument.Parse does not expand external entities
+using System.Xml.Linq;
 public class V05FrameworkNativeSafe {
+  System.Xml.Linq.XDocument Doc;
   public void Run(string input) {
-    _ = input;
+    Doc = XDocument.Parse(input, LoadOptions.None);
   }
 }
