@@ -1,6 +1,8 @@
-using Microsoft.AspNetCore.Builder;
-public static class V01AllowAnyOriginSafe {
-  public static void Configure(WebApplicationBuilder b) {
-    b.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins("https://app.example.com")));
+// SAFE — cors: a single explicit origin rather than AllowAnyOrigin.
+using Microsoft.AspNetCore.Cors.Infrastructure;
+public class V01AllowAnyOriginSafe {
+  public void Run(CorsPolicyBuilder builder) {
+    builder.WithOrigins("https://app.example.com")
+           .WithMethods("GET", "POST");
   }
 }

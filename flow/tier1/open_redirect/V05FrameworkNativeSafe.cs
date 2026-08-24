@@ -1,6 +1,8 @@
+// SAFE — open_redirect: LocalRedirect refuses absolute destinations
 using Microsoft.AspNetCore.Mvc;
 public class V05FrameworkNativeSafe {
-  public IActionResult Run(string input) {
-    _ = input;
+  Microsoft.AspNetCore.Mvc.IActionResult Result;
+  public void Run(string input) {
+    Result = new LocalRedirectResult(input);
   }
 }

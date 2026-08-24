@@ -1,9 +1,7 @@
-using System.Xml;
-using System.IO;
+// SAFE — xxe: XDocument.Parse does not resolve external entities.
+using System.Xml.Linq;
 public class V02Safe {
-  public void Run(string input) {
-    var settings = new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit };
-        using var reader = XmlReader.Create(new StringReader(input), settings);
-        var doc = new XmlDocument(); doc.Load(reader);
+  public XDocument Run(string input) {
+    return XDocument.Parse(input, LoadOptions.None);
   }
 }

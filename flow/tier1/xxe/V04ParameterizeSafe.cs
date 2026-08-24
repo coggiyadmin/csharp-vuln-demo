@@ -1,7 +1,10 @@
+// SAFE — xxe: reader settings prohibit DTDs and disable resolution
 using System.Xml;
-using System.IO;
 public class V04ParameterizeSafe {
+  System.Xml.Linq.XDocument Doc;
   public void Run(string input) {
-    _ = input;
+    var settings = new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null };
+    using var reader = XmlReader.Create(new System.IO.StringReader(input), settings);
+    new XmlDocument().Load(reader);
   }
 }

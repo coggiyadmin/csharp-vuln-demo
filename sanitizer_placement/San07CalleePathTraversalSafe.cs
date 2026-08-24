@@ -1,8 +1,9 @@
+// SAFE — PathTraversal sanitizer, applied inside a helper the caller delegates to — GetFileName strips every directory component
 using System.IO;
 public class San07CalleePathTraversalSafe {
-  static string Read(string p) {
-    var v = System.IO.Path.GetFileName(p);
-    return File.ReadAllText(System.IO.Path.Combine("/data", v));
+  static string Clean(string x) { return Path.GetFileName(x); }
+  public string Run(string input) {
+    var v = Clean(input);
+    return File.ReadAllText("/data/" + v);
   }
-  public string Run(string input) => Read(input);
 }

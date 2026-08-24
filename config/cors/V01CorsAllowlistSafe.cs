@@ -1,6 +1,10 @@
-using Microsoft.AspNetCore.Builder;
-public static class V01CorsAllowlistSafe {
-  public static void Configure(WebApplicationBuilder b) {
-    b.Services.AddCors(o => o.AddDefaultPolicy(p => p.WithOrigins("https://app.example.com")));
+// SAFE — cors: credentialed requests restricted to an explicit origin allowlist.
+using Microsoft.AspNetCore.Cors.Infrastructure;
+public class V01CorsAllowlistSafe {
+  static readonly string[] Origins = { "https://app.example.com", "https://admin.example.com" };
+  public void Run(CorsPolicyBuilder builder) {
+    builder.WithOrigins(Origins)
+           .AllowCredentials()
+           .WithHeaders("Authorization", "Content-Type");
   }
 }

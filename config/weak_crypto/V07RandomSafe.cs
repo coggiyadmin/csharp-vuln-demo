@@ -1,8 +1,8 @@
+// SAFE — weak_crypto: session token bytes from the cryptographic RNG.
 using System.Security.Cryptography;
 public class V07RandomSafe {
-  public byte[] Run(byte[] data) {
-    using var aes = Aes.Create();
-    aes.GenerateKey(); aes.GenerateIV();
-    return aes.CreateEncryptor().TransformFinalBlock(data, 0, data.Length);
+  public string Token() {
+    var bytes = RandomNumberGenerator.GetBytes(32);
+    return System.Convert.ToHexString(bytes);
   }
 }

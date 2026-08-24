@@ -1,7 +1,10 @@
+// SAFE — PathTraversal sanitizer, applied late, immediately before the sink — GetFileName strips every directory component
 using System.IO;
 public class San11DelayedEncodePathTraversalSafe {
   public string Run(string input) {
-    var v = System.IO.Path.GetFileName(input);
-    return File.ReadAllText(System.IO.Path.Combine("/data", v));
+    var t = input;
+    var length = t.Length;
+    var v = Path.GetFileName(t);
+    return File.ReadAllText("/data/" + v);
   }
 }
