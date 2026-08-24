@@ -1,6 +1,9 @@
+// SAFE — insecure_cookie: session cookie with no persistent expiry.
 using Microsoft.AspNetCore.Http;
 public class V03SessionCookieSafe {
   public void Run(HttpResponse res) {
-    res.Cookies.Append("sid", "x", new CookieOptions { HttpOnly = true, Secure = true });
+    var options = new CookieOptions { Secure = true, HttpOnly = true, SameSite = SameSiteMode.Lax };
+    options.Expires = null;
+    res.Cookies.Append("sess", "abc", options);
   }
 }

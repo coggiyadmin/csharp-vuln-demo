@@ -1,7 +1,8 @@
+// SAFE — PathTraversal sanitizer, applied at the end of a call chain — GetFileName strips every directory component
 using System.IO;
 public class San06ChainPathTraversalSafe {
   public string Run(string input) {
-    var v = System.IO.Path.GetFileName(input.Trim());
-    return File.ReadAllText(System.IO.Path.Combine("/data", v));
+    var v = Path.GetFileName(input.Trim().ToLowerInvariant());
+    return File.ReadAllText("/data/" + v);
   }
 }

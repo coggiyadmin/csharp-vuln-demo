@@ -1,5 +1,7 @@
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
+using Newtonsoft.Json;
 public class Sk12JsonOnlyDeserWrongTp {
-  public object Run(byte[] data) => new BinaryFormatter().Deserialize(new MemoryStream(data)); // SINK
+  public object Run(string json) {
+    var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+    return JsonConvert.DeserializeObject(json, settings); // SINK CWE-502
+  }
 }

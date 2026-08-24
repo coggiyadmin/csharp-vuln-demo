@@ -1,7 +1,7 @@
-using System.Web;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
+// SAFE — xss: value rendered as text content, never as raw markup.
+using Microsoft.AspNetCore.Mvc.Rendering;
 public class V02Safe {
   public object Run(string input) {
-    return Html.Raw(HttpUtility.HtmlEncode(input));
+    return new TagBuilder("div") { InnerHtml = { } }.SetInnerText(input);
   }
 }

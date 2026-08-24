@@ -1,8 +1,10 @@
+// SAFE — weak_crypto: keyed HMAC-SHA256 instead of a bare MD5 digest.
 using System.Security.Cryptography;
+using System.Text;
 public class V02Md5HashSafe {
-  public byte[] Run(byte[] data) {
-    using var aes = Aes.Create();
-    aes.GenerateKey(); aes.GenerateIV();
-    return aes.CreateEncryptor().TransformFinalBlock(data, 0, data.Length);
+  public byte[] Run(string s) {
+    var key = RandomNumberGenerator.GetBytes(32);
+    using var mac = new HMACSHA256(key);
+    return mac.ComputeHash(Encoding.UTF8.GetBytes(s));
   }
 }

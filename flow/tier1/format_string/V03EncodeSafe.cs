@@ -1,5 +1,8 @@
+// SAFE — format_string: braces escaped so the value cannot introduce placeholders
 public class V03EncodeSafe {
+  static string Message;
   public void Run(string input) {
-    String.Format("{0}", input);
+    var safe = input.Replace("{", "{{").Replace("}", "}}");
+    Message = string.Format("{0}", safe);
   }
 }

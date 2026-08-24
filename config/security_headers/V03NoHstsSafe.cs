@@ -1,6 +1,10 @@
+// SAFE — security_headers: HSTS with a long max-age, subdomains and preload.
 using Microsoft.AspNetCore.Builder;
-public static class V03NoHstsSafe {
-  public static void Configure(WebApplication app) {
-    app.UseHsts();
+using Microsoft.AspNetCore.HttpsPolicy;
+public class V03NoHstsSafe {
+  public void Configure(HstsOptions options) {
+    options.MaxAge = System.TimeSpan.FromDays(365);
+    options.IncludeSubDomains = true;
+    options.Preload = true;
   }
 }

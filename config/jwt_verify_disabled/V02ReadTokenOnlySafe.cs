@@ -1,13 +1,15 @@
-using System.IdentityModel.Tokens.Jwt;
+// SAFE — jwt_verify_disabled: claims are read only from the validated principal.
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 public class V02ReadTokenOnlySafe {
-  public void Run(string token, SecurityKey key) {
-    var p = new TokenValidationParameters {
+  public string Run(string token, SecurityKey key) {
+    var parameters = new TokenValidationParameters {
       ValidateIssuerSigningKey = true,
       IssuerSigningKey = key,
-      ValidateIssuer = false,
-      ValidateAudience = false,
+      ValidateLifetime = true
     };
-    new JwtSecurityTokenHandler().ValidateToken(token, p, out _);
+    var principal = new JwtSecurityTokenHandler().ValidateToken(token, parameters, out _);
+    return principal.Claims.First(c => c.Type == "sub").Value;
   }
 }

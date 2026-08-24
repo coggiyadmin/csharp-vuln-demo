@@ -1,13 +1,17 @@
-using System.IdentityModel.Tokens.Jwt;
+// SAFE — jwt_verify_disabled: signature, issuer, audience and lifetime all validated.
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 public class V01JwtNoVerifySafe {
-  public void Run(string token, SecurityKey key) {
-    var p = new TokenValidationParameters {
+  public System.Security.Claims.ClaimsPrincipal Run(string token, SecurityKey key) {
+    var parameters = new TokenValidationParameters {
       ValidateIssuerSigningKey = true,
       IssuerSigningKey = key,
-      ValidateIssuer = false,
-      ValidateAudience = false,
+      ValidateIssuer = true,
+      ValidIssuer = "https://issuer.example.com",
+      ValidateAudience = true,
+      ValidAudience = "api",
+      ValidateLifetime = true
     };
-    new JwtSecurityTokenHandler().ValidateToken(token, p, out _);
+    return new JwtSecurityTokenHandler().ValidateToken(token, parameters, out _);
   }
 }

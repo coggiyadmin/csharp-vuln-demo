@@ -1,4 +1,8 @@
-using System.Net.Http;
+// SAFE — tls_verify_disabled: TLS 1.2+ pinned and certificate validation left in place.
+using System.Net;
 public class V03ServicePointManagerSafe {
-  public HttpClient Run() => new HttpClient(new HttpClientHandler()); // default verify
+  public void Run() {
+    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
+    ServicePointManager.ServerCertificateValidationCallback = null;
+  }
 }

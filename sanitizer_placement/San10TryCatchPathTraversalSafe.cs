@@ -1,10 +1,11 @@
+// SAFE — PathTraversal sanitizer, applied inside a try block — GetFileName strips every directory component
 using System.IO;
 public class San10TryCatchPathTraversalSafe {
   public string Run(string input) {
     try {
-      var v = System.IO.Path.GetFileName(input);
-      return File.ReadAllText(System.IO.Path.Combine("/data", v));
-    } catch { return ""; }
-
+      var v = Path.GetFileName(input);
+      File.ReadAllText("/data/" + v);
+    } catch { }
+    return default;
   }
 }

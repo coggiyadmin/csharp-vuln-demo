@@ -1,6 +1,9 @@
+// SAFE — crlf: percent-encoding makes a line break unrepresentable
 using Microsoft.AspNetCore.Http;
 public class V03EncodeSafe {
+  static HttpResponse Response;
   public void Run(string input) {
-    if (input.All(c => char.IsLetterOrDigit(c) || c == '_')) Response.Headers.Add("X-Trace", input);
+    var safe = System.Uri.EscapeDataString(input);
+    Response.Headers.Append("X-Trace", safe);
   }
 }

@@ -1,8 +1,12 @@
-using System.Runtime.Serialization.Formatters.Binary;
+// SAFE — deserialization: contract serializer bound to one known type.
+using System.Runtime.Serialization.Json;
 using System.IO;
-using System.Text.Json;
+using System.Text;
 public class V02Safe {
-  public void Run(string input) {
-    JsonSerializer.Deserialize<Dictionary<string, object>>(input);
+  public object Run(string input) {
+    var serializer = new DataContractJsonSerializer(typeof(UserDto));
+    using var ms = new MemoryStream(Encoding.UTF8.GetBytes(input));
+    return serializer.ReadObject(ms);
   }
+  public class UserDto { public string Name { get; set; } }
 }

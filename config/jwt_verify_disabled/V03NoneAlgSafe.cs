@@ -1,13 +1,14 @@
-using System.IdentityModel.Tokens.Jwt;
+// SAFE — jwt_verify_disabled: only RS256 is accepted, so "none" cannot be negotiated.
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 public class V03NoneAlgSafe {
-  public void Run(string token, SecurityKey key) {
-    var p = new TokenValidationParameters {
+  public System.Security.Claims.ClaimsPrincipal Run(string token, SecurityKey key) {
+    var parameters = new TokenValidationParameters {
       ValidateIssuerSigningKey = true,
       IssuerSigningKey = key,
-      ValidateIssuer = false,
-      ValidateAudience = false,
+      ValidAlgorithms = new[] { SecurityAlgorithms.RsaSha256 },
+      ValidateLifetime = true
     };
-    new JwtSecurityTokenHandler().ValidateToken(token, p, out _);
+    return new JwtSecurityTokenHandler().ValidateToken(token, parameters, out _);
   }
 }

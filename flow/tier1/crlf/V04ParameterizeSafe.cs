@@ -1,6 +1,9 @@
+// SAFE — crlf: only a derived integer reaches the header value
 using Microsoft.AspNetCore.Http;
 public class V04ParameterizeSafe {
+  static HttpResponse Response;
   public void Run(string input) {
-    if (input.All(c => char.IsLetterOrDigit(c) || c == '_')) Response.Headers.Add("X-Trace", input);
+    Response.Headers.Append("X-Trace", "request");
+    Response.Headers.Append("X-Trace-Length", input.Length.ToString());
   }
 }

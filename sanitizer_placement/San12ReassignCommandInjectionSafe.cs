@@ -1,7 +1,10 @@
+// SAFE — CommandInjection sanitizer, applied by reassigning the same variable — only [A-Za-z0-9_] survives, so no shell metacharacter can reach the command
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 public class San12ReassignCommandInjectionSafe {
   public void Run(string input) {
     var v = input;
-    Process.Start(new ProcessStartInfo("grep", v) { UseShellExecute = false });
+    v = Regex.Replace(v, "[^A-Za-z0-9_]", "");
+    Process.Start("sh -c " + v);
   }
 }
